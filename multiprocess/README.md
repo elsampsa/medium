@@ -2,10 +2,10 @@
 
 Not a day goes by in Medium articles without someone complaining that Python is not the future of machine learning.
 
-For example, things like "I can write a GPU kernel in Julia but not in Python".  Most of us data scientists/engineers are just dummy _engineers_ who use ready-made libraries.
+For example, things like "I can write a GPU kernel in Julia but not in Python".  However, most of us data scientists/engineers are just dummy _engineers_ who use ready-made libraries.
 95% of us are not interested in "writing a GPU kernel".
 
-Another complain is about multiprocessing: on many occasions, you feel forced to use multiprocessing instead of multithreading.  People find this cumbersome (especially because of interprocess communication). Also, multiprocessing is very prone to errors if you're not carefull.
+Another complain is about multiprocessing: on many occasions, you need to use multiprocessing instead of multithreading.  People find this cumbersome (especially because of interprocess communication). Also, multiprocessing is very prone to errors if you're not carefull.
 
 Although cumbersome at first sight, multiprocessing does have several advantages.
 
@@ -41,8 +41,10 @@ This problem is further aggravated by the fact that many libraries which you use
 Said all that, this is the correct order of doing things:
 ```
 0. import libraries that do not use multithreading
-1. create interprocess communication primitives and shared resources that are shared between multiprocesses (however, not considered in this tutorial)
-2. create interprocess communication primitives and shared resources that are shared with the main process and your current multiprocess
+1. create interprocess communication primitives and shared resources that are 
+   shared between multiprocesses (however, not considered in this tutorial)
+2. create interprocess communication primitives and shared resources that 
+   are shared with the main process and your current multiprocess
 3. fork (=create multiprocesses)
 4. import libraries that use multithreading
 5. if you use asyncio in your multiprocess, create a new event loop
@@ -53,19 +55,24 @@ Let's take a closer look on these steps:
 0. import libraries that do not use multithreading
     - say, standard libraries
 
-(1. create interprocess communication primitives and shared resources used by many multiprocesses
+(1. create interprocess communication primitives and shared resources that are 
+   shared between multiprocesses
     - This is the subject of another tutorial)
     
-2. create interprocess communication primitives and shared resources used by the current multiprocess
+2. create interprocess communication primitives and shared resources that 
+   are shared with the main process and your current multiprocess
     - Multiprocess' intercommunication pipes
-    - These will be visible to your current process and also to the code running "on the other-side of the fork"
+    - These will be visible to your current process and 
+      also to the code running "on the other-side of the fork"
     
 3. fork (=create multiprocesses)
     - Creates that process running "on the other side"
-    - Triggered when you call your multiprocessing.Process classes start() method
+    - Triggered when you call your multiprocessing.Process classes 
+      start() method
 
 4. import libraries that use multithreading
-    - As mentioned, quite many libraries _might_ use multithreading under-the-hood.  Even your belowed tensorflow and pytorch.
+    - As mentioned, quite many libraries _might_ use multithreading under-the-hood.  
+      Even your belowed tensorflow and pytorch.
     - Instantiate objects from those libraries
 
 5. if you use asyncio, remember to create a new event loop
@@ -226,7 +233,7 @@ p.stop()
 ```
 Note that we use only the frontend methods (start, ping and stop).
 
-The complete example is available here:[]
+The complete example is available [here](https://github.com/elsampsa/medium/tree/main/multiprocess).
 
 Note that we have successfully eliminated the mental load of needing to think about the fork at all.  At the same time, the code has a clear distinction to and intercommunication with the forked process. We just need to think in terms of the front- and backend and their corresponding methods.
 
