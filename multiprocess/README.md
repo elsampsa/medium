@@ -80,7 +80,7 @@ Let's take a closer look on these steps:
 
 Next, let's blend these steps with an actual code:
 ```
- # 0. import libraries that do not use multithreading:
+# 0. import libraries that do not use multithreading:
 import os, sys, time
 from multiprocessing import Process, Pipe
 
@@ -167,7 +167,7 @@ Backend methods ``listenFront__()`` and ``ping__()`` run at the backend and they
 
 Here is the code:
 ```
- # 0. import libraries that do not use multithreading:
+# 0. import libraries that do not use multithreading:
 import os, sys, time
 from multiprocessing import Process, Pipe
 
@@ -286,7 +286,6 @@ obj.call()
 ...
 obj.call()
 ...
-
 ```
 i.e. instantiate and start your multiprocesses before anything else.
 
