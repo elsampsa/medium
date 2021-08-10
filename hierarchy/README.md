@@ -20,7 +20,7 @@ There are disparate practical applications for this.  I'll give a detailed examp
 
 Let's start the trip.
 
-## The global state mess
+## Global State Mess swamp
 
 _(skip if you're way too familiar with this)_
 
@@ -71,7 +71,7 @@ The so-called _global state mess_ is ready to be served.
 
 If you ever been in a situation where you are wandering around a complex codebase, trying to find out what the different classes are actually _for_, while simultaneously trying to figure out how they affect each other and the global state of the program ("how did the program end up in this state?"), then you know what I'm talking about.
 
-## Functional Programming
+## Functional Programming village
 
 In (purely) functional programming, you don't instantiate objects.  They don't exist.  There are no members either.  Everything revolves around functions.  For creating complex programming logic, instead of instantiating objects, passing them around and calling their members, you just do this:
 ```
@@ -149,7 +149,7 @@ We can think those functions as "intercommunicating entities".  But their "inter
 
 There is no intercommunication in this tree that would a traverse between siblings, jump to ancestors (other than immediate parent), etc.  Those restrictions arise naturally, since in functional programming you can only use functions.
 
-## Into The Object Oriented Universe
+## Object Oriented valley
 
 Next, let's leave the (fantasy) world of functional programming behind.  Let's turn that function cascade diagram (4) into an object instance hierarchy instead:
 ```
@@ -186,7 +186,7 @@ It could also be that "smart" junior programmer that was given the task to fix o
 
 Eventually, the code becomes an impenetrable spaghetti.  In the worst case scenario, to change even the simplest behaviour of the code will require weeks of work as you're desperately trying to find the response to the question: "in wtf-state the code is?".  This process might also involve red-faced and raving managers (who created the problem themselves in the first place, by wanting to be 'agile').
 
-## In Between
+## In between
 
 So, how to avoid the OOP disaster ever happening?
 
@@ -208,7 +208,7 @@ Let's mimic the mechanics of FP in OOP and also come up with a fancy acronym: HI
 
 A purely functional programming language enforces several of these rules by definition.  In other languages we can try to follow them (of course, until that "smart" junior programmer comes along).
 
-## Graphical User Interfaces
+## Graphical User Interface city
 
 A particularly tricky situation in terms of a global state is a graphical user interface (GUIs).  A GUI has _always_ a state, typically a very complex one.
 
@@ -236,7 +236,7 @@ And yes, we have a great opportunity to create a variety of global state messes 
 
 We can use HIMO to narrow down the intercommunication within the View and between the Model and the View and mitigate (1-3).
 
-## A Qt Example
+## A Qt Example sideroad
 
 Next we'll consider a small and a silly example case and provide the code for it in Python Qt (PySide2 flavor).  Implementing the same thing in Vue.js is left as an excercise.  :)
 
@@ -338,7 +338,7 @@ Some other things to note (also commented in the code itself):
 
 That's it.  Thank you for hanging on.   The only thing to left to do in this artcile is to take a look at the code itself.  Hopefully you'll enjoy.  If not, please leave some rants into the comments.
 
-## Summary
+## Back home
 
 Thanks for joining us on this trip from functional to object-oriented programming, object hierarchies, graphical user interfaces and from there to Qt and Vue.js.
 
