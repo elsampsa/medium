@@ -244,7 +244,7 @@ Here is the goal: on the left, a list of items, showing the complete name of a p
 
 ![qt example](app.png)
 
-To see how it _really_ works, I suggest that you try it.  First, download it from [here](), and then do this:
+To see how it _really_ works, I suggest that you try it.  First, download it from [here](https://github.com/elsampsa/medium/blob/main/hierarchy/example.py), and then do this:
 ```
 pip3 install --user PySide2
 python3 example.py
@@ -347,6 +347,5 @@ We saw how we can use the lessons from functional programming to make our object
 This was applied to a trivial graphical user interface example.  However, the same principle can be applied in disparate fields of programming.
 
 Final tip: sketching the object hierarchies, their inputs and outputs, helps in developing/debugging your code.  So it's a good idea to include them into your code comments (like we did here).
-
 
 

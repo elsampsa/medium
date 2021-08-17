@@ -189,11 +189,11 @@ class HandlerThread(threading.Thread):
     def addProcess(self, process: MyProcess):
         """Tell thread to start listening to a multiprocess
         """
-        self.front_pipe.send("com") # tell thread backend to check out comlist
         with self.comlist_lock: # we're doing multithreading, so protect comlist access with a lock
             self.comlist.append((
                 "addProcess", process
             ))
+        self.front_pipe.send("com") # tell thread backend to check out comlist
 
     
     def someSlot(self, par):
@@ -201,16 +201,16 @@ class HandlerThread(threading.Thread):
 
         ..remember that the actual functionality of the slot must happen at QThread's backend!  In this case, in the backend method "someSlot__"
         """
-        self.front_pipe.send("com") # tell thread backend to check out comlist
         with self.comlist_lock: # we're doing multithreading, so protect comlist access with a lock
             self.comlist.append((
                 "someSlot", par
             ))
+        self.front_pipe.send("com") # tell thread backend to check out comlist
 
 
     def stop(self):
         self.front_pipe.send("stop")
-        self.join()
+        self.join() # Qt NOTE: use self.wait() instead
 
 
 
